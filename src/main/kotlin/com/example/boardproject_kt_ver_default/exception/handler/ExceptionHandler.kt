@@ -43,7 +43,7 @@ class ExceptionHandler(): ResponseEntityExceptionHandler() {
             .body(createExceptionEntity(e))
     }
 
-    @ExceptionHandler(FileNotFoundException::class, NoSuchFileException::class)
+    @ExceptionHandler(FileNotFoundException::class, NoSuchFileException::class, NoSuchElementException::class)
     fun fileNotFoundExceptionHandler(e: Exception): ResponseEntity<Any> {
         exceptionLog(e)
 

@@ -1,5 +1,6 @@
 package com.example.boardproject_kt_ver_default.service.imageBoard.file
 
+import com.example.boardproject_kt_ver_default.domain.dto.business.imageBoard.FileDTO
 import org.springframework.stereotype.Service
 import org.springframework.web.multipart.MultipartFile
 import java.io.File
@@ -12,7 +13,7 @@ import kotlin.jvm.Throws
 class ImageFileWriteService {
 
     @Throws(IOException::class)
-    fun saveFile(filePath: String, image: MultipartFile): Map<String, String> {
+    fun saveFile(filePath: String, image: MultipartFile): FileDTO {
         val originalName: String = image.originalFilename!!
         val saveName:String = SimpleDateFormat("yyyyMMddHHmmss")
                             .format(System.currentTimeMillis()) +
@@ -23,12 +24,10 @@ class ImageFileWriteService {
 
         image.transferTo(File(saveFile))
 
-        var map = mutableMapOf<String, String>()
-        map["imageName"] = saveName
-        map["oldName"] = originalName
-
-
-        return map
+        return FileDTO(
+            imageName = saveName,
+            oldName = originalName
+        )
     }
 
     @Throws(IOException::class)

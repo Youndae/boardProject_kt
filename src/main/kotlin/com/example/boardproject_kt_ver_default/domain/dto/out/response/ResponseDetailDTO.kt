@@ -4,7 +4,7 @@ data class ResponseDetailDTO<T>(
     val content: T,
     val userStats: UserStatusDTO
 ) {
-    constructor(responseContent: T, nickname: String): this(
+    constructor(responseContent: T, nickname: String?): this(
         content = responseContent,
         userStats = UserStatusDTO(nickname)
     )

@@ -1,5 +1,6 @@
 package com.example.boardproject_kt_ver_default.domain.entity
 
+import com.example.boardproject_kt_ver_default.domain.dto.`in`.imageBoard.ImageBoardPostDTO
 import jakarta.persistence.*
 import org.hibernate.annotations.CreationTimestamp
 import java.time.LocalDate
@@ -28,5 +29,10 @@ class ImageBoard(
     fun addImageData(imageData: ImageData) {
         imageDataSet += imageData
         imageData.imageBoardSet(this)
+    }
+
+    fun setPatchData(dto: ImageBoardPostDTO) {
+        this.imageTitle = dto.imageTitle
+        this.imageContent = dto.imageContent
     }
 }

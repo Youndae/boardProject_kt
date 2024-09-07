@@ -1,6 +1,6 @@
 package com.example.boardproject_kt_ver_default.domain.factory
 
-import com.example.boardproject_kt_ver_default.domain.dto.out.comment.CommentDTO
+import com.example.boardproject_kt_ver_default.domain.dto.out.response.ResponseDetailDTO
 import com.example.boardproject_kt_ver_default.domain.dto.out.response.ResponsePageableListDTO
 import com.example.boardproject_kt_ver_default.service.auth.PrincipalReadService
 import org.springframework.data.domain.Page
@@ -35,5 +35,12 @@ class ResponseFactory(
             .body(
                 ResponsePageableListDTO(result, nickname)
             )
+    }
+
+    fun <T> createDetailResponse(result: T, principal: Principal): ResponseEntity<ResponseDetailDTO<T>> {
+        val nickname = principalService.getNicknameToPrincipal(principal)
+
+        return ResponseEntity.status(HttpStatus.OK)
+            .body(ResponseDetailDTO(result, nickname))
     }
 }

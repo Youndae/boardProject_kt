@@ -30,7 +30,7 @@ class MemberWriteUseCase(
 
         try{
             if(profileThumbnail != null)
-                thumbnailName = fileService.saveFile(filePath, profileThumbnail)["imageName"]
+                thumbnailName = fileService.saveFile(filePath, profileThumbnail).imageName
 
             joinDTO.userPw = passwordEncodeService.encodeMemberPassword(joinDTO.userPw)
 
@@ -56,7 +56,7 @@ class MemberWriteUseCase(
 
         try {
             if(profileThumbnail != null)
-                newThumbnail = fileService.saveFile(filePath, profileThumbnail)["imageName"]
+                newThumbnail = fileService.saveFile(filePath, profileThumbnail).imageName
 
             val result = memberService.patchProfile(profile, newThumbnail, deleteThumbnail, principal)
 

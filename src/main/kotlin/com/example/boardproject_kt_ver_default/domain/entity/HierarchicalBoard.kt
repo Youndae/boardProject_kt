@@ -1,5 +1,7 @@
 package com.example.boardproject_kt_ver_default.domain.entity
 
+import com.example.boardproject_kt_ver_default.domain.dto.`in`.hierarchicalBoard.HierarchicalBoardPostDTO
+import com.example.boardproject_kt_ver_default.domain.dto.`in`.hierarchicalBoard.HierarchicalBoardReplyPostDTO
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
@@ -35,10 +37,21 @@ class HierarchicalBoard(
     @CreationTimestamp
     var boardDate: LocalDate? = null
 
-    fun setInsertionOtherData(bno: Long){
-        this.boardGroupNo = bno
-        this.boardUpperNo = bno.toString()
+    fun setInsertionOtherData(){
+        this.boardGroupNo = this.boardNo
+        this.boardUpperNo = this.boardNo.toString()
         this.boardIndent = 0
+    }
+
+    fun setInsertionReplyData(dto: HierarchicalBoardReplyPostDTO) {
+        this.boardGroupNo = dto.boardGroupNo
+        this.boardUpperNo = dto.boardUpperNo + "," + this.boardNo.toString()
+        this.boardIndent = dto.boardIndent + 1
+    }
+
+    fun setPatchData(boardDTO: HierarchicalBoardPostDTO) {
+        this.boardTitle = boardDTO.boardTitle
+        this.boardContent = boardDTO.boardContent
     }
 
 }
