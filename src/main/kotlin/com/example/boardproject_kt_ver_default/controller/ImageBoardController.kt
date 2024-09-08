@@ -49,7 +49,7 @@ class ImageBoardController(
     fun getList(@RequestParam(value = "pageNum") pageNum: Int
                 , @RequestParam(value = "keyword", required = false) keyword: String?
                 , @RequestParam(value = "searchType", required = false) searchType: String?
-                , principal: Principal): ResponseEntity<ResponsePageableListDTO<ImageBoardListDTO>> {
+                , principal: Principal?): ResponseEntity<ResponsePageableListDTO<ImageBoardListDTO>> {
         val result = imageBoardReadUseCase.getList(pageNum, keyword, searchType)
 
         return responseFactory.createPaginationList(result, principal)
@@ -66,7 +66,7 @@ class ImageBoardController(
      * ResponseEntity<ResponseDetailAndModifyDTO<Any>>
      */
     @GetMapping("/{imageNo}")
-    fun getDetail(@PathVariable imageNo: Long, principal: Principal): ResponseEntity<ResponseDetailDTO<ImageBoardDetailDTO>> {
+    fun getDetail(@PathVariable imageNo: Long, principal: Principal?): ResponseEntity<ResponseDetailDTO<ImageBoardDetailDTO>> {
         val result = imageBoardReadUseCase.getDetail(imageNo)
 
         return responseFactory.createDetailResponse(result, principal)

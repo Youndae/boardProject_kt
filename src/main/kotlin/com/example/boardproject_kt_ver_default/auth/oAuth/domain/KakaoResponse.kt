@@ -10,7 +10,7 @@ class KakaoResponse(
     private val profileAttribute: Map<String, Any> = accountAttribute["profile"] as Map<String, Any>
 
     override fun getProvider(): String {
-        return OAuthProvider.KAKAO.getKey()
+        return OAuthProvider.KAKAO.key
     }
 
     override fun getProviderId(): String {

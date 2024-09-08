@@ -23,7 +23,7 @@ class MemberReadUseCase(
         return memberReadService.checkId(userId)
     }
 
-    fun checkNickname(nickname: String, principal: Principal): String {
+    fun checkNickname(nickname: String, principal: Principal?): String {
 
         return memberReadService.checkNickname(nickname, principal)
     }

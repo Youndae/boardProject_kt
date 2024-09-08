@@ -27,7 +27,7 @@ class ResponseFactory(
 
     fun <T> createPaginationList(
         result: Page<T>,
-        principal: Principal
+        principal: Principal?
     ): ResponseEntity<ResponsePageableListDTO<T>> {
         val nickname = principalService.getNicknameToPrincipal(principal)
 
@@ -37,7 +37,7 @@ class ResponseFactory(
             )
     }
 
-    fun <T> createDetailResponse(result: T, principal: Principal): ResponseEntity<ResponseDetailDTO<T>> {
+    fun <T> createDetailResponse(result: T, principal: Principal?): ResponseEntity<ResponseDetailDTO<T>> {
         val nickname = principalService.getNicknameToPrincipal(principal)
 
         return ResponseEntity.status(HttpStatus.OK)

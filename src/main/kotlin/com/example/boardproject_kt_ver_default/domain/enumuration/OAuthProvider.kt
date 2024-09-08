@@ -7,5 +7,4 @@ enum class OAuthProvider(val key: String) {
     NAVER("naver"),
     KAKAO("kakao");
 
-    fun getKey(): String = key
 }

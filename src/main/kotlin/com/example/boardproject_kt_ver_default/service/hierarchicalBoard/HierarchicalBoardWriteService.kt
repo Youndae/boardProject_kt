@@ -7,6 +7,7 @@ import com.example.boardproject_kt_ver_default.domain.entity.Member
 import com.example.boardproject_kt_ver_default.exception.custom.CustomAccessDeniedException
 import com.example.boardproject_kt_ver_default.repository.hierarchicalBoard.HierarchicalBoardRepository
 import com.example.boardproject_kt_ver_default.domain.enumuration.Result
+import com.example.boardproject_kt_ver_default.util.logger
 import org.springframework.stereotype.Service
 import java.security.Principal
 
@@ -14,6 +15,9 @@ import java.security.Principal
 class HierarchicalBoardWriteService(
     val boardRepository: HierarchicalBoardRepository
 ) {
+
+    private val log = logger()
+
     fun postBoard(boardDTO: HierarchicalBoardPostDTO, member: Member): Long {
         val board = HierarchicalBoard(
                         member = member,
@@ -56,8 +60,9 @@ class HierarchicalBoardWriteService(
 
     fun deleteBoard(boardNo: Long, principal: Principal): String {
         val board: HierarchicalBoard = boardRepository.findById(boardNo)
-            .orElseThrow{ NoSuchElementException("Delete board data not found") }
-        if(board.member.userId == principal.name)
+                                        .orElseThrow{ NoSuchElementException("Delete board data not found") }
+
+        if(board.member.userId != principal.name)
             throw CustomAccessDeniedException("Delete board AccessDenied")
 
         if(board.boardIndent == 0)

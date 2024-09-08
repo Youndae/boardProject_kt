@@ -42,11 +42,11 @@ class CustomOAuth2UserService(
     }
 
     private fun createProviderObject(registrationId: String, oAuth2User: OAuth2User): OAuth2Response {
-        if(registrationId == OAuthProvider.NAVER.getKey())
+        if(registrationId == OAuthProvider.NAVER.key)
             return NaverResponse(oAuth2User.attributes)
-        else if(registrationId == OAuthProvider.GOOGLE.getKey())
+        else if(registrationId == OAuthProvider.GOOGLE.key)
             return GoogleResponse(oAuth2User.attributes)
-        else if(registrationId == OAuthProvider.KAKAO.getKey())
+        else if(registrationId == OAuthProvider.KAKAO.key)
             return KakaoResponse(oAuth2User.attributes)
         else
             throw BadCredentialsException("OAuth2 BadCredentials")

@@ -6,6 +6,4 @@ enum class ErrorCode(val httpStatus: Int, val message: String) {
     , ACCESS_DENIED(403, "AccessDeniedException")
     , IO_EXCEPTION(400, "IOException");
 
-    fun getHttpStatus(): Int = httpStatus
-    fun getMessage(): String = message
 }

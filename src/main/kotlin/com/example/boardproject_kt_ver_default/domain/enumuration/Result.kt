@@ -7,6 +7,4 @@ enum class Result(val resultMessage: String) {
     , ERROR("ERROR")
     , DUPLICATED("DUPLICATED")
     , AVAILABLE("AVAILABLE");
-
-    fun getResultMessage(): String = resultMessage
 }

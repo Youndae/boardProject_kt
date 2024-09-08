@@ -24,14 +24,14 @@ class MemberWriteService(
         return Result.SUCCESS.resultMessage
     }
 
-    fun patchProfile(profile: ProfileRequestDTO
+    fun patchProfile(nickname: String
                      , newThumbnail: String?
                      , deleteThumbnail: String?
                      , principal: Principal): String {
 
         val member: Member = memberRepository.findByUserId(principal.name)
 
-        member.nickName = profile.nickname
+        member.nickName = nickname
 
         if(newThumbnail != null)
             member.profileThumbnail = newThumbnail

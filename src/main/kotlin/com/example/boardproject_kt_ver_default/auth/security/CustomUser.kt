@@ -16,7 +16,7 @@ class CustomUser(
     constructor(member: Member): this(
         member.userId,
         member.userPw!!,
-        member.auth.map { auth -> SimpleGrantedAuthority(auth.auth) },
+        member.auths.map { auth -> SimpleGrantedAuthority(auth.auth) },
         member
     )
 

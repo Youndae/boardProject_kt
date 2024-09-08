@@ -6,5 +6,7 @@ import org.springframework.data.domain.Pageable
 
 interface CommentCustomRepository {
 
-    fun findAll(boardNo: Long?, imageNo: Long?, pageable: Pageable): Page<CommentDTO>
+    fun getList(boardNo: Long?, imageNo: Long?, pageable: Pageable): Page<CommentDTO>
+
+
 }

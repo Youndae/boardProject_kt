@@ -7,7 +7,7 @@ class GoogleResponse(
 ): OAuth2Response {
 
     override fun getProvider(): String {
-        return OAuthProvider.GOOGLE.getKey()
+        return OAuthProvider.GOOGLE.key
     }
 
     override fun getProviderId(): String {

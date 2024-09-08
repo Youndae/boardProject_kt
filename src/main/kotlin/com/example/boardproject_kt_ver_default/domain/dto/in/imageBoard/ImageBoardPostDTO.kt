@@ -11,9 +11,9 @@ data class ImageBoardPostDTO @JsonCreator constructor(
 ){
     fun toEntity(member: Member): ImageBoard {
         return ImageBoard(
-            imageTitle = this.imageTitle,
-            member = member,
-            imageContent = this.imageContent
+            this.imageTitle,
+            member,
+            this.imageContent
         )
     }
 }

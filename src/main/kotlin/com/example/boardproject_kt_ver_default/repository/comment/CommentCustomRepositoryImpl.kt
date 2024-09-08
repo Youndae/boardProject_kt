@@ -18,11 +18,12 @@ class CommentCustomRepositoryImpl(
     private val jpaQueryFactory: JPAQueryFactory
 ): CommentCustomRepository {
 
-    override fun findAll(boardNo: Long?, imageNo: Long?, pageable: Pageable): Page<CommentDTO> {
+    override fun getList(boardNo: Long?, imageNo: Long?, pageable: Pageable): Page<CommentDTO> {
         val list: List<CommentDTO> = jpaQueryFactory.select(
                                         Projections.constructor(
                                             CommentDTO::class.java,
                                             comment.commentNo,
+                                            comment.member.nickName,
                                             comment.commentDate,
                                             CaseBuilder()
                                                 .`when`(comment.commentStatus.gt(0))

@@ -17,9 +17,9 @@ class Member(
     var profileThumbnail: String? = null
 
     @OneToMany(mappedBy = "member", fetch = FetchType.EAGER, cascade = [CascadeType.ALL])
-    private var auths: MutableList<Auth> = mutableListOf()
-    val auth: List<Auth>
-        get() = auths.toList()
+    var auths: MutableList<Auth> = mutableListOf()
+    /*val auth: List<Auth>
+        get() = auths.toList()*/
 
     constructor(
         userId: String,
@@ -41,7 +41,7 @@ class Member(
     }
 
     fun addAuth() {
-        val auth = Auth(Role.MEMBER.getKey())
+        val auth = Auth(Role.MEMBER.key)
         auths += auth
         auth.memberSet(this)
     }

@@ -47,7 +47,7 @@ class MemberWriteUseCase(
     }
 
     @Transactional(rollbackFor = [Exception::class])
-    fun patchProfile(profile: ProfileRequestDTO
+    fun patchProfile(nickname: String
                      , profileThumbnail: MultipartFile?
                      , deleteThumbnail: String?
                     , principal: Principal): String {
@@ -58,7 +58,7 @@ class MemberWriteUseCase(
             if(profileThumbnail != null)
                 newThumbnail = fileService.saveFile(filePath, profileThumbnail).imageName
 
-            val result = memberService.patchProfile(profile, newThumbnail, deleteThumbnail, principal)
+            val result = memberService.patchProfile(nickname, newThumbnail, deleteThumbnail, principal)
 
             try {
                 if(deleteThumbnail != null)

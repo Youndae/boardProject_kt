@@ -18,6 +18,7 @@ import org.springframework.data.support.PageableExecutionUtils
 import com.example.boardproject_kt_ver_default.domain.entity.QHierarchicalBoard.hierarchicalBoard
 import com.example.boardproject_kt_ver_default.domain.entity.QMember.member
 import com.querydsl.core.types.dsl.BooleanExpression
+import org.springframework.transaction.annotation.Transactional
 
 @Repository
 class HierarchicalBoardCustomRepositoryImpl(
@@ -46,6 +47,7 @@ class HierarchicalBoardCustomRepositoryImpl(
 
         var count: JPAQuery<Long> = jpaQueryFactory.select(hierarchicalBoard.countDistinct())
                                                     .from(hierarchicalBoard)
+                                                    .where(searchTypeEq(pageDTO))
 
 
         return PageableExecutionUtils.getPage(list, pageable) {
@@ -75,8 +77,8 @@ class HierarchicalBoardCustomRepositoryImpl(
                                         HierarchicalBoardDetailDTO::class.java,
                                         hierarchicalBoard.boardNo,
                                         hierarchicalBoard.boardTitle,
-                                        hierarchicalBoard.member.nickName,
                                         hierarchicalBoard.boardContent,
+                                        hierarchicalBoard.member.nickName,
                                         hierarchicalBoard.boardDate
                                     )
                                 )
@@ -113,9 +115,10 @@ class HierarchicalBoardCustomRepositoryImpl(
                                     .fetchOne()
     }
 
+    @Transactional(rollbackFor = [Exception::class])
     override fun deleteByBoardGroupNo(boardNo: Long) {
         jpaQueryFactory.delete(hierarchicalBoard)
-                        .where(hierarchicalBoard.boardGroupNo.eq(boardNo))
+                        .where(hierarchicalBoard.boardGroupNo.eq(boardNo)).execute()
     }
 
     override fun findAllByBoardGroupNo(groupNo: Long): List<HierarchicalBoard> {

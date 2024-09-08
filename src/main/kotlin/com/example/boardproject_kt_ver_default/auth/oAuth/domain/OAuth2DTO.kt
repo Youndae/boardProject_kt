@@ -12,7 +12,7 @@ data class OAuth2DTO(
     constructor(existsData: Member): this(
         existsData.userId,
         existsData.username,
-        existsData.auth,
+        existsData.auths,
         existsData.nickName
     )
 }

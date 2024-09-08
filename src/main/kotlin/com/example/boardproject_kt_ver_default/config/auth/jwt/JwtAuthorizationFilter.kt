@@ -21,7 +21,6 @@ import org.springframework.stereotype.Component
 import org.springframework.web.filter.OncePerRequestFilter
 import org.springframework.web.util.WebUtils
 import java.io.IOException
-import java.util.Collections
 import kotlin.jvm.Throws
 
 @Component
@@ -106,13 +105,13 @@ class JwtAuthorizationFilter(
             val authentication: Authentication = UsernamePasswordAuthenticationToken(userId, null, authorities)
 
             SecurityContextHolder.getContext().authentication = authentication
-
-            filterChain.doFilter(request, response)
         }
+
+        filterChain.doFilter(request, response)
     }
 
     private fun tokenStealingExceptionResponse(response: HttpServletResponse) {
-        response.status = ErrorCode.TOKEN_STEALING.getHttpStatus()
+        response.status = ErrorCode.TOKEN_STEALING.httpStatus
         response.contentType = MediaType.APPLICATION_JSON_VALUE
         response.characterEncoding = "utf-8"
     }

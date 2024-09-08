@@ -6,8 +6,6 @@ import com.example.boardproject_kt_ver_default.domain.dto.out.hierarchialBoard.H
 import com.example.boardproject_kt_ver_default.domain.dto.out.hierarchialBoard.HierarchicalBoardPatchDTO
 import com.example.boardproject_kt_ver_default.domain.dto.out.hierarchialBoard.HierarchicalBoardReplyInfoDTO
 import com.example.boardproject_kt_ver_default.domain.mapper.PaginationRequestMapper
-import com.example.boardproject_kt_ver_default.exception.custom.CustomAccessDeniedException
-import com.example.boardproject_kt_ver_default.service.auth.PrincipalReadService
 import com.example.boardproject_kt_ver_default.service.hierarchicalBoard.HierarchicalBoardReadService
 import org.springframework.data.domain.Page
 import org.springframework.stereotype.Service
@@ -17,7 +15,6 @@ import java.security.Principal
 class HierarchicalBoardReadUseCase(
     private val boardReadService: HierarchicalBoardReadService,
     private val paginationRequestMapper: PaginationRequestMapper,
-    private val principalReadService: PrincipalReadService
 ) {
     fun getList(pageNum: Int, keyword: String?, searchType: String?): Page<HierarchicalBoardListDTO> {
         val pageDTO: PaginationDTO = paginationRequestMapper.toPaginationDTO(pageNum, keyword, searchType)

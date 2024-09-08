@@ -8,6 +8,7 @@ import com.example.boardproject_kt_ver_default.domain.dto.out.member.ProfileResp
 import com.example.boardproject_kt_ver_default.domain.factory.ResponseFactory
 import com.example.boardproject_kt_ver_default.useCase.member.MemberReadUseCase
 import com.example.boardproject_kt_ver_default.useCase.member.MemberWriteUseCase
+import com.example.boardproject_kt_ver_default.util.logger
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
 import org.springframework.http.HttpStatus
@@ -32,6 +33,7 @@ class MemberController(
     private val responseFactory: ResponseFactory
 ) {
 
+    private val log = logger()
     /**
      * 로그인 체크 - React에서 로그인 여부 확인 시 요청
      *
@@ -96,7 +98,7 @@ class MemberController(
      * ResponseEntity<String> || String
      */
     @GetMapping("/check-nickname")
-    fun checkNickname(@RequestParam("nickname") nickname: String, principal: Principal): ResponseEntity<String> {
+    fun checkNickname(@RequestParam("nickname") nickname: String, principal: Principal?): ResponseEntity<String> {
         val result = memberReadUseCase.checkNickname(nickname, principal)
 
         return responseFactory.createStringResponse(result)
@@ -153,12 +155,14 @@ class MemberController(
      */
     @PatchMapping("/profile")
     @PreAuthorize("hasAnyRole('ROLE_MEMBER', 'ROLE_ADMIN')")
-    fun patchProfile(@RequestPart profile: ProfileRequestDTO
+    fun patchProfile(@RequestParam("nickname") nickname: String
                     , @RequestParam(value = "profileThumbnail", required = false) profileThumbnail: MultipartFile?
                     , @RequestParam(value = "deleteProfile", required = false) deleteProfile: String?
                     , principal: Principal): ResponseEntity<String> {
 
-        val result = memberWriteUseCase.patchProfile(profile, profileThumbnail, deleteProfile, principal)
+        log.info("patchProfile nickname : {}", nickname)
+
+        val result = memberWriteUseCase.patchProfile(nickname, profileThumbnail, deleteProfile, principal)
 
         return responseFactory.createStringResponse(result)
     }

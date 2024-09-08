@@ -8,7 +8,7 @@ interface MemberRepository: JpaRepository<Member, String> {
 
     fun findByUserId(userId: String): Member
 
-    fun findByNickname(nickname: String): Member?
+    fun findByNickName(nickname: String): Member?
 
     @Query(value = "SELECT m " +
             "FROM Member m " +

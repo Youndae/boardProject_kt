@@ -95,7 +95,8 @@ class CommentWriteService(
         if(comment.member.userId != member.userId)
             throw CustomAccessDeniedException("delete comment AccessDeniedException")
 
-        commentRepository.deleteById(commentNo)
+        comment.commentStatus = 1
+        commentRepository.save(comment)
 
         return Result.SUCCESS.resultMessage
     }

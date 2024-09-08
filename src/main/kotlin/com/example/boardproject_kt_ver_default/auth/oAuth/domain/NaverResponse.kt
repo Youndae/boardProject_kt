@@ -7,7 +7,7 @@ class NaverResponse(
 ): OAuth2Response {
 
     override fun getProvider(): String {
-        return OAuthProvider.NAVER.getKey()
+        return OAuthProvider.NAVER.key
     }
 
     override fun getProviderId(): String {

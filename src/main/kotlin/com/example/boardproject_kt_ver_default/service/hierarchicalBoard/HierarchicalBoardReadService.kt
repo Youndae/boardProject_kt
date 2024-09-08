@@ -8,7 +8,6 @@ import com.example.boardproject_kt_ver_default.domain.dto.out.hierarchialBoard.H
 import com.example.boardproject_kt_ver_default.domain.dto.out.hierarchialBoard.HierarchicalBoardReplyInfoDTO
 import com.example.boardproject_kt_ver_default.exception.custom.CustomAccessDeniedException
 import com.example.boardproject_kt_ver_default.repository.hierarchicalBoard.HierarchicalBoardRepository
-import com.example.boardproject_kt_ver_default.service.auth.PrincipalReadService
 import com.example.boardproject_kt_ver_default.util.logger
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.PageRequest

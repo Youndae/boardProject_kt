@@ -1,4 +1,9 @@
 <Configuration>
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%highlight(%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n)</pattern>
+        </encoder>
+    </appender>
     <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>/logback-spring/logback-spring.log</file>
         <encoder>
@@ -11,16 +16,64 @@
         </roolingPolicy>
     </appender>
 
-    <logger name="jdbc" level="OFF"/>
+    <logger name="sun.rmi" level="DEBUG" additivity="false">
+        <appender-ref ref="file"/>
+    </logger>
+    <logger name="java.rmi" level="DEBUG" additivity="false">
+        <appender-ref ref="file"/>
+    </logger>
+    <logger name="javax.management.remote.rmi" level="DEBUG" additivity="false">
+        <appender-ref ref="file"/>
+    </logger>
+
+    <logger name="sun.rmi" level="ERROR" additivity="false">
+        <appender-ref ref="console"/>
+    </logger>
+    <logger name="java.rmi" level="ERROR" additivity="false">
+        <appender-ref ref="console"/>
+    </logger>
+    <logger name="javax.management.remote.rmi" level="ERROR" additivity="false">
+        <appender-ref ref="console"/>
+    </logger>
+
+
+
+    <logger name="jdbc" level="ERROR">
+        <appender-ref ref="console"/>
+    </logger>
+    <logger name="jdbc" level="DEBUG">
+        <appender-ref ref="file"/>
+    </logger>
+    <logger name="jdbc.sqlonly" level="INFO"/>
+    <logger name="jdbc.sqltiming" level="INFO"/>
+
+
+    <logger name="jdbc.audit" level="DEBUG">
+        <appender-ref ref="file"/>
+    </logger>
+    <logger name="jdbc.resultset" level="DEBUG">
+        <appender-ref ref="file"/>
+    </logger>
+    <logger name="jdbc.resultsettable" level="DEBUG">
+        <appender-ref ref="file"/>
+    </logger>
+    <logger name="jdbc.connection" level="DEBUG">
+        <appender-ref ref="file"/>
+    </logger>
+
+
+
+    <!--<logger name="jdbc" level="OFF"/>
 
     <logger name="jdbc.sqlonly" level="INFO"/>
     <logger name="jdbc.sqltiming" level="INFO"/>
     <logger name="jdbc.audit" level="DEBUG"/>
     <logger name="jdbc.resultset" level="DEBUG"/>
     <logger name="jdbc.resultsettable" level="DEBUG"/>
-    <logger name="jdbc.connection" level="DEBUG"/>
+    <logger name="jdbc.connection" level="DEBUG"/>-->
 
     <root level="info">
+        <appender-ref ref="console"/>
         <appender-ref ref="file"/>
     </root>
 </Configuration>

@@ -4,11 +4,10 @@ import com.example.boardproject_kt_ver_default.domain.dto.`in`.comment.CommentIn
 import com.example.boardproject_kt_ver_default.domain.dto.`in`.comment.CommentReplyInsertDTO
 import com.example.boardproject_kt_ver_default.domain.dto.out.comment.CommentDTO
 import com.example.boardproject_kt_ver_default.domain.dto.out.response.ResponsePageableListDTO
-import com.example.boardproject_kt_ver_default.domain.entity.Comment
 import com.example.boardproject_kt_ver_default.domain.factory.ResponseFactory
-import com.example.boardproject_kt_ver_default.domain.mapper.PaginationRequestMapper
 import com.example.boardproject_kt_ver_default.useCase.comment.CommentReadUseCase
 import com.example.boardproject_kt_ver_default.useCase.comment.CommentWriteUseCase
+import com.example.boardproject_kt_ver_default.util.logger
 import org.springframework.http.ResponseEntity
 import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.web.bind.annotation.DeleteMapping
@@ -29,6 +28,8 @@ class CommentController(
     private val responseFactory: ResponseFactory
 ) {
 
+    private val log = logger()
+
     /**
      * 계층형 게시판 댓글 리스트 조회.
      *
@@ -41,9 +42,11 @@ class CommentController(
     @GetMapping("/board")
     fun getBoardCommentList(@RequestParam(value = "boardNo") boardNo: Long
                             , @RequestParam("pageNum") pageNum: Int
-                            , principal: Principal): ResponseEntity<ResponsePageableListDTO<CommentDTO>> {
+                            , principal: Principal?): ResponseEntity<ResponsePageableListDTO<CommentDTO>> {
 
         val result = commentReadUseCase.getBoardCommentList(boardNo, pageNum)
+
+        log.info("CommentController::getList : {}", result)
 
         return responseFactory.createPaginationList(result, principal)
     }
@@ -60,9 +63,8 @@ class CommentController(
     @GetMapping("/image")
     fun getImageBoardCommentList(@RequestParam(value = "imageNo") imageNo: Long
                                  , @RequestParam("pageNum") pageNum: Int
-                                 , principal: Principal): ResponseEntity<ResponsePageableListDTO<CommentDTO>> {
+                                 , principal: Principal?): ResponseEntity<ResponsePageableListDTO<CommentDTO>> {
         val result = commentReadUseCase.getImageCommentList(imageNo, pageNum)
-
 
         return responseFactory.createPaginationList(result, principal)
     }

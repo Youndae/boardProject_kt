@@ -11,6 +11,7 @@ import com.example.boardproject_kt_ver_default.domain.dto.out.response.ResponseP
 import com.example.boardproject_kt_ver_default.domain.factory.ResponseFactory
 import com.example.boardproject_kt_ver_default.useCase.hierarchicalBoard.HierarchicalBoardReadUseCase
 import com.example.boardproject_kt_ver_default.useCase.hierarchicalBoard.HierarchicalBoardWriteUseCase
+import com.example.boardproject_kt_ver_default.util.logger
 import org.springframework.http.ResponseEntity
 import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.web.bind.annotation.DeleteMapping
@@ -32,6 +33,8 @@ class HierarchicalBoardController(
     private val responseFactory: ResponseFactory
 ) {
 
+    private val log = logger()
+
     /**
      * 게시글 리스트 조회
      *
@@ -43,12 +46,18 @@ class HierarchicalBoardController(
      * ResponseEntity<ResponsePageableDTO<Any>>
      */
     @GetMapping("/")
-    fun getBoardList(@RequestParam(value = "pageNum") pageNum: Int
-                    , @RequestParam(value = "keyword", required = false) keyword: String?
+    fun getBoardList(@RequestParam(value = "keyword", required = false) keyword: String?
                     , @RequestParam(value = "searchType", required = false) searchType: String?
-                    , principal: Principal): ResponseEntity<ResponsePageableListDTO<HierarchicalBoardListDTO>> {
+                     , @RequestParam(value = "pageNum") pageNum: Int
+                    , principal: Principal?): ResponseEntity<ResponsePageableListDTO<HierarchicalBoardListDTO>> {
+
+        log.info("getBoardList. pageNum : $pageNum")
+
+        println("getBoardList $pageNum")
 
         val result = boardReadUseCase.getList(pageNum, keyword, searchType)
+
+        log.info("getBoardList::result : $result")
 
         return responseFactory.createPaginationList(result, principal)
     }
@@ -63,7 +72,7 @@ class HierarchicalBoardController(
      * ResponseEntity<ResponseDetailAndModifyDTO<Any>>
      */
     @GetMapping("/{boardNo}")
-    fun getDetail(@PathVariable boardNo: Long, principal: Principal): ResponseEntity<ResponseDetailDTO<HierarchicalBoardDetailDTO>> {
+    fun getDetail(@PathVariable boardNo: Long, principal: Principal?): ResponseEntity<ResponseDetailDTO<HierarchicalBoardDetailDTO>> {
 
         val result = boardReadUseCase.getDetail(boardNo)
 

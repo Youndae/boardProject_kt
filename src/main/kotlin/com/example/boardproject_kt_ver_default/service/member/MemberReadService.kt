@@ -1,6 +1,5 @@
 package com.example.boardproject_kt_ver_default.service.member
 
-import com.example.boardproject_kt_ver_default.auth.security.CustomUser
 import com.example.boardproject_kt_ver_default.config.auth.jwt.JwtProperties
 import com.example.boardproject_kt_ver_default.config.auth.jwt.JwtTokenProvider
 import com.example.boardproject_kt_ver_default.domain.dto.`in`.member.LoginRequestDTO
@@ -10,20 +9,16 @@ import com.example.boardproject_kt_ver_default.repository.member.MemberRepositor
 import com.example.boardproject_kt_ver_default.util.logger
 import org.springframework.stereotype.Service
 import com.example.boardproject_kt_ver_default.domain.enumuration.Result
-import com.example.boardproject_kt_ver_default.exception.custom.CustomAccessDeniedException
 import jakarta.servlet.http.Cookie
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder
-import org.springframework.security.core.Authentication
 import org.springframework.web.util.WebUtils
 import java.security.Principal
 
 @Service
 class MemberReadService(
     private val memberRepository: MemberRepository,
-    private val authenticationManagerBuilder: AuthenticationManagerBuilder,
     private val tokenProvider: JwtTokenProvider
 ) {
 
@@ -33,21 +28,21 @@ class MemberReadService(
         val member: Member? = memberRepository.findByLocalUserId(userId)
 
         return if (member == null)
-                    Result.AVAILABLE.getResultMessage()
+                    Result.AVAILABLE.resultMessage
                 else
-                    Result.DUPLICATED.getResultMessage()
+                    Result.DUPLICATED.resultMessage
     }
 
     fun checkNickname(nickname: String, principal: Principal?): String {
-        val member: Member? = memberRepository.findByNickname(nickname)
+        val member: Member? = memberRepository.findByNickName(nickname)
 
         return if(member == null){
-                    Result.AVAILABLE.getResultMessage()
+                    Result.AVAILABLE.resultMessage
                 }else {
                     if(principal != null && member.userId == principal.name){
-                        Result.AVAILABLE.getResultMessage()
+                        Result.AVAILABLE.resultMessage
                     }else {
-                        Result.DUPLICATED.getResultMessage()
+                        Result.DUPLICATED.resultMessage
                     }
                 }
     }
@@ -61,11 +56,7 @@ class MemberReadService(
     fun loginProc(member: LoginRequestDTO
                 , request: HttpServletRequest
                 , response: HttpServletResponse): String {
-        val authenticationToken = UsernamePasswordAuthenticationToken(member.userId, member.userPw)
-        val authentication: Authentication = authenticationManagerBuilder
-                                                .`object`
-                                                .authenticate(authenticationToken)
-
+        UsernamePasswordAuthenticationToken(member.userId, member.userPw)
         val inoCookie: Cookie? = WebUtils.getCookie(request, JwtProperties.INO_HEADER)
 
         if(inoCookie == null)
