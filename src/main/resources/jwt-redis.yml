@@ -1,0 +1,7 @@
+token-redis:
+  access:
+    expiration: 1 # of hours
+    prefix: at
+  refresh:
+    expiration: 14 # of days
+    prefix: rt

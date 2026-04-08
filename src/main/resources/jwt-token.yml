@@ -1,0 +1,10 @@
+token:
+  prefix: Bearer
+
+  access:
+    header: Authorization
+    expiration: 3600000 # of milliseconds
+
+  refresh:
+    header: Authorization_Refresh
+    expiration: 1209600000 # of milliseconds
