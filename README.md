@@ -54,11 +54,11 @@ CRUD, 파일 시스템 관리, 계층형 쿼리 등 백엔드의 핵심 기능�
       - TypeScript의 엄격한 타입을 통해 Runtime 이전 단계에서의 안정성 확보를 경험했습니다.
 
 ## 목차
-<strong>1. [개발 환경](#개발-환경)</strong>
-<strong>2. [프로젝트 구조 및 설계 원칙](#프로젝트-구조-및-설계-원칙)</strong>
-<strong>3. [ERD](#ERD)</strong>
-<strong>4. [기능 목록](#기능-목록)</strong>
-<string>5. [핵심 기능 및 문제 해결](#핵심-기능-및-문제-해결)</strong>
+<strong>1. [개발 환경](#개발-환경)</strong>   
+<strong>2. [프로젝트 구조 및 설계 원칙](#프로젝트-구조-및-설계-원칙)</strong>   
+<strong>3. [ERD](#ERD)</strong>   
+<strong>4. [기능 목록](#기능-목록)</strong>   
+<string>5. [핵심 기능 및 문제 해결](#핵심-기능-및-문제-해결)</strong>   
 
 <br/>
 <br/>
@@ -296,8 +296,8 @@ class GlobalExceptionHandler : ResponseEntityExceptionHander() {
 <br/>
 
 ### 목차
-1. **[로그인](#로그인)**
-2. **[ConfigurationProperties 문제 해결](#ConfigurationProperties-문제-해결)**
+1. **[로그인](#로그인)**   
+2. **[ConfigurationProperties 문제 해결](#ConfigurationProperties-문제-해결)**   
 
 <br/>
 <br/>
