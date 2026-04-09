@@ -1,6 +1,6 @@
 package com.example.boardproject_kt.auth.oAuth.response
 
-import com.example.boardproject_kt.domain.enumuration.OAuthProvider
+import com.example.boardproject_kt.domain.enums.OAuthProvider
 
 class KakaoResponse(private val attributes: Map<String, Any>): OAuth2Response {
 

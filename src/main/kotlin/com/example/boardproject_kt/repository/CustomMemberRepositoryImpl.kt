@@ -5,7 +5,7 @@ import com.example.boardproject_kt.domain.entity.Member
 import com.querydsl.jpa.impl.JPAQueryFactory
 import org.springframework.stereotype.Repository
 
-import com.example.boardproject_kt.domain.enumuration.OAuthProvider
+import com.example.boardproject_kt.domain.enums.OAuthProvider
 import com.querydsl.core.types.Projections
 
 import com.example.boardproject_kt.domain.entity.QMember.member

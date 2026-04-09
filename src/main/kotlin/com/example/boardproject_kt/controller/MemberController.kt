@@ -6,7 +6,7 @@ import com.example.boardproject_kt.domain.dto.member.request.UpdateProfileReques
 import com.example.boardproject_kt.domain.dto.member.response.MemberStatusResponse
 import com.example.boardproject_kt.domain.dto.member.response.ProfileResponse
 import com.example.boardproject_kt.domain.dto.response.ApiResponse
-import com.example.boardproject_kt.domain.enumuration.MemberCheckResult
+import com.example.boardproject_kt.domain.enums.MemberCheckResult
 import com.example.boardproject_kt.service.member.AuthContextService
 import com.example.boardproject_kt.usecase.file.FileReadUseCase
 import com.example.boardproject_kt.usecase.member.MemberReadUseCase

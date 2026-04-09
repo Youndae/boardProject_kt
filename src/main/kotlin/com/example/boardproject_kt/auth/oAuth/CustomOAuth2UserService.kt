@@ -7,7 +7,7 @@ import com.example.boardproject_kt.auth.oAuth.response.KakaoResponse
 import com.example.boardproject_kt.auth.oAuth.response.NaverResponse
 import com.example.boardproject_kt.auth.oAuth.response.OAuth2Response
 import com.example.boardproject_kt.domain.entity.Member
-import com.example.boardproject_kt.domain.enumuration.OAuthProvider
+import com.example.boardproject_kt.domain.enums.OAuthProvider
 import com.example.boardproject_kt.repository.MemberRepository
 import io.github.oshai.kotlinlogging.KotlinLogging
 import org.springframework.security.authentication.BadCredentialsException
@@ -42,7 +42,7 @@ class CustomOAuth2UserService(
         }
 
         memberRepository.save<Member>(existsData)
-        val oAuth2Member: OAuth2Member = OAuth2Member(existsData)
+        val oAuth2Member = OAuth2Member(existsData)
 
         return CustomOAuth2User(oAuth2Member)
     }

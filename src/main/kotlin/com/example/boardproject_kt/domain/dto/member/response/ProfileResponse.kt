@@ -1,6 +1,6 @@
 package com.example.boardproject_kt.domain.dto.member.response
 
-import com.example.boardproject_kt.domain.enumuration.MailSuffix
+import com.example.boardproject_kt.domain.enums.MailSuffix
 
 data class ProfileResponse(
     var nickname: String? = null,

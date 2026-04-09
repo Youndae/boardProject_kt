@@ -1,4 +1,4 @@
-package com.example.boardproject_kt.domain.enumuration
+package com.example.boardproject_kt.domain.enums
 
 enum class OAuthProvider(
     val key: String

@@ -6,10 +6,9 @@ import com.example.boardproject_kt.domain.dto.board.response.BoardPatchDetailRes
 import com.example.boardproject_kt.domain.dto.common.business.PageCondition
 import com.example.boardproject_kt.domain.dto.common.request.ListRequest
 import com.example.boardproject_kt.domain.dto.response.PageResponse
-import com.example.boardproject_kt.domain.enumuration.ListAmount
+import com.example.boardproject_kt.domain.enums.ListAmount
 import com.example.boardproject_kt.exception.CustomNotFoundException
 import com.example.boardproject_kt.exception.ErrorCode
-import com.example.boardproject_kt.repository.BoardRepository
 import com.example.boardproject_kt.service.board.BoardDataService
 import com.example.boardproject_kt.service.common.PrincipalService
 import io.github.oshai.kotlinlogging.KotlinLogging

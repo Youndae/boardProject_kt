@@ -1,6 +1,6 @@
 package com.example.boardproject_kt.domain.dto.response
 
-import com.example.boardproject_kt.domain.enumuration.ResponseStatus
+import com.example.boardproject_kt.domain.enums.ResponseStatus
 import com.example.boardproject_kt.exception.ErrorCode
 import com.fasterxml.jackson.annotation.JsonInclude
 import java.time.OffsetDateTime

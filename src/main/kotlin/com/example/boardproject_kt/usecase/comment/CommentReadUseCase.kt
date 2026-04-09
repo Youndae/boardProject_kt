@@ -2,7 +2,7 @@ package com.example.boardproject_kt.usecase.comment
 
 import com.example.boardproject_kt.domain.dto.comment.response.BoardCommentResponse
 import com.example.boardproject_kt.domain.dto.response.PageResponse
-import com.example.boardproject_kt.domain.enumuration.ListAmount
+import com.example.boardproject_kt.domain.enums.ListAmount
 import com.example.boardproject_kt.service.comment.CommentDataService
 import io.github.oshai.kotlinlogging.KotlinLogging
 import org.springframework.data.domain.PageRequest

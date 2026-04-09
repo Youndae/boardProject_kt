@@ -6,7 +6,7 @@ import com.example.boardproject_kt.domain.dto.imageBoard.response.ImageBoardDeta
 import com.example.boardproject_kt.domain.dto.imageBoard.response.ImageBoardListResponse
 import com.example.boardproject_kt.domain.dto.imageBoard.response.ImageBoardPatchDetailResponse
 import com.example.boardproject_kt.domain.dto.response.PageResponse
-import com.example.boardproject_kt.domain.enumuration.ListAmount
+import com.example.boardproject_kt.domain.enums.ListAmount
 import com.example.boardproject_kt.exception.CustomNotFoundException
 import com.example.boardproject_kt.exception.ErrorCode
 import com.example.boardproject_kt.service.common.PrincipalService

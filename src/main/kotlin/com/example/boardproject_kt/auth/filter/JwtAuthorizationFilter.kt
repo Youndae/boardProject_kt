@@ -5,8 +5,8 @@ import com.example.boardproject_kt.auth.service.TokenProvider
 import com.example.boardproject_kt.auth.user.CustomUser
 import com.example.boardproject_kt.auth.user.CustomUserDetails
 import com.example.boardproject_kt.domain.entity.Member
-import com.example.boardproject_kt.domain.enumuration.OAuthProvider
-import com.example.boardproject_kt.domain.enumuration.TokenValidationResult
+import com.example.boardproject_kt.domain.enums.OAuthProvider
+import com.example.boardproject_kt.domain.enums.TokenValidationResult
 import com.example.boardproject_kt.exception.ErrorCode
 import com.example.boardproject_kt.properties.CookieProperties
 import com.example.boardproject_kt.properties.TokenProperties

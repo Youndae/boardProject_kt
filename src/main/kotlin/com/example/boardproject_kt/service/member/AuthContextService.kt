@@ -2,7 +2,7 @@ package com.example.boardproject_kt.service.member
 
 import com.example.boardproject_kt.auth.user.CustomUser
 import com.example.boardproject_kt.domain.dto.member.response.MemberStatusResponse
-import com.example.boardproject_kt.domain.enumuration.Role
+import com.example.boardproject_kt.domain.enums.Role
 import org.springframework.security.core.Authentication
 import org.springframework.stereotype.Service
 

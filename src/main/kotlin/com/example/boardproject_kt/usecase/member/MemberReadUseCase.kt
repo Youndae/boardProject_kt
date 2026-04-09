@@ -1,7 +1,7 @@
 package com.example.boardproject_kt.usecase.member
 
 import com.example.boardproject_kt.domain.dto.member.response.ProfileResponse
-import com.example.boardproject_kt.domain.enumuration.MemberCheckResult
+import com.example.boardproject_kt.domain.enums.MemberCheckResult
 import com.example.boardproject_kt.exception.CustomAuthenticationException
 import com.example.boardproject_kt.exception.ErrorCode
 import com.example.boardproject_kt.service.member.MemberDataService

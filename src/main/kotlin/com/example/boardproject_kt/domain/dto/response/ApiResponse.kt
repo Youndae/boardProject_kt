@@ -1,6 +1,6 @@
 package com.example.boardproject_kt.domain.dto.response
 
-import com.example.boardproject_kt.domain.enumuration.ResponseStatus
+import com.example.boardproject_kt.domain.enums.ResponseStatus
 import org.springframework.http.HttpStatus
 import java.time.OffsetDateTime
 
@@ -34,8 +34,5 @@ data class ApiResponse<T>(
             message = message,
             content = content
         )
-
-
     }
-
 }

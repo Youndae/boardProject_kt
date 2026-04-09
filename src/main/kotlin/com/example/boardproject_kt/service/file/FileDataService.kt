@@ -1,7 +1,7 @@
 package com.example.boardproject_kt.service.file
 
 import com.example.boardproject_kt.domain.entity.ImageData
-import com.example.boardproject_kt.domain.enumuration.SaveImageKey
+import com.example.boardproject_kt.domain.enums.SaveImageKey
 import com.example.boardproject_kt.exception.CustomIOException
 import com.example.boardproject_kt.exception.ErrorCode
 import io.github.oshai.kotlinlogging.KotlinLogging

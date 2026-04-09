@@ -1,7 +1,7 @@
 package com.example.boardproject_kt.domain.entity
 
 import com.example.boardproject_kt.auth.oAuth.domain.OAuth2Member
-import com.example.boardproject_kt.domain.enumuration.Role
+import com.example.boardproject_kt.domain.enums.Role
 import jakarta.persistence.CascadeType
 import jakarta.persistence.Column
 import jakarta.persistence.Entity

@@ -1,7 +1,7 @@
 package com.example.boardproject_kt.auth.handler
 
 import com.example.boardproject_kt.domain.dto.response.ExceptionResponse
-import com.example.boardproject_kt.domain.enumuration.ResponseStatus
+import com.example.boardproject_kt.domain.enums.ResponseStatus
 import com.example.boardproject_kt.exception.ErrorCode
 import com.fasterxml.jackson.databind.ObjectMapper
 import jakarta.servlet.http.HttpServletRequest
